@@ -5,7 +5,7 @@ class OneItem extends Component {
   render() {
     const { item: i } = this.props;
     return (
-      <div>
+      <div className={'card m-2 ' + (i.goodsServicesType === 'Goods' ? 'bg-warning' : 'bg-info')}>
         <div className="card-header">Type: {i.goodsServicesType} </div>
         <div className="card-body">
           <h5 className="card-title">{i.name}</h5>
@@ -16,7 +16,9 @@ class OneItem extends Component {
         </div>
         <div className="card-footer">
           <button className="btn btn-success">Edit</button>
-          <button className="btn btn-danger">Delete</button>
+          <button onClick={() => this.props.onDelete(i._id)} className="btn btn-danger">
+            Delete
+          </button>
         </div>
       </div>
     );
