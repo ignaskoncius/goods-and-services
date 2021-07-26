@@ -13,4 +13,14 @@ router.post('/goodsServices/new', async (req, res) => {
   }
 });
 
+// get all goods/services
+router.get('/allGoodsServices', async (req, res) => {
+  try {
+    const allGoodsServices = await GoodsOrServices.find();
+    res.json(allGoodsServices);
+  } catch (error) {
+    res.status(500).json();
+  }
+});
+
 module.exports = router;
