@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getAllData } from './utils/requests';
+import { getAllData, getFilterredData, deleteItem } from './utils/requests';
 import './App.css';
 import MyForm from './components/MyForm';
 import GoodsServicesList from './components/GoodsServicesList';
@@ -21,7 +21,14 @@ class App extends Component {
   };
 
   FilterGoodsServices = async (filterValue) => {
-    console.log('filtruoji itemus');
+    const filterredItems = await getFilterredData(filterValue);
+    this.setState({ allData: filterredItems });
+  };
+
+  handleDelete = async (id) => {
+    console.log('trying to delete', id);
+    await deleteItem(id);
+    this.getAllDataFromDb();
   };
 
   render() {
@@ -29,6 +36,7 @@ class App extends Component {
       <div className="App">
         <MyForm onGetAllDataFromDb={this.getAllDataFromDb}></MyForm>
         <GoodsServicesList
+          onDelete={this.handleDelete}
           onFilterGoodsServices={this.FilterGoodsServices}
           allData={this.state.allData || []}
         ></GoodsServicesList>
