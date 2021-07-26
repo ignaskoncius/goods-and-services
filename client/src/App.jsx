@@ -20,7 +20,7 @@ class App extends Component {
     console.log(this.state.allData);
   };
 
-  FilterGoodsServices = async (filterValue) => {
+  filterGoodsServices = async (filterValue) => {
     const filterredItems = await getFilterredData(filterValue);
     this.setState({ allData: filterredItems });
   };
@@ -33,11 +33,11 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App container">
         <MyForm onGetAllDataFromDb={this.getAllDataFromDb}></MyForm>
         <GoodsServicesList
           onDelete={this.handleDelete}
-          onFilterGoodsServices={this.FilterGoodsServices}
+          onFilterGoodsServices={this.filterGoodsServices}
           allData={this.state.allData || []}
         ></GoodsServicesList>
       </div>
