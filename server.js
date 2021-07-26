@@ -5,7 +5,7 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const app = express();
 
-const PORT = 4001;
+const PORT = 4000;
 
 // Middleware
 app.use(morgan('dev'));
@@ -22,5 +22,10 @@ mongoose
     console.log('Connected to Mongoooooose');
   })
   .catch((err) => console.log(err));
+
+// routes
+const postRoutes = require('./server/routes/routes');
+// use route
+app.use('/', postRoutes);
 
 app.listen(PORT, console.log(`Server is running on port ${PORT}`));

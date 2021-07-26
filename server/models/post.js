@@ -19,6 +19,10 @@ const postSchema = new Schema(
       type: String,
       required: true,
     },
+    goodsServicesType: {
+      type: String,
+      required: true,
+    },
     duration: {
       type: Number,
     },
@@ -26,6 +30,6 @@ const postSchema = new Schema(
   { timestamps: true }
 );
 
-const GoodsOrServices = mongoose.model('goodsOrServices', postSchema);
+const GoodsOrServices = mongoose.model('goodsOrService', postSchema);
 
 module.exports = GoodsOrServices;
