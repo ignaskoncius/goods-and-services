@@ -1,0 +1,6 @@
+POST http://localhost:4000/goodsServices/new 
+Content-Type: application/json
+
+{
+"name": "Burokeliai", "price": 1.5, "quantity": 20, "description": "Labai skanu", "goodsServicesType": "Goods" 
+}
