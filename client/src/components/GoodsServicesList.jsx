@@ -4,11 +4,12 @@ import OneItem from './OneItem';
 class GoodsServicesList extends Component {
   state = {};
   render() {
+    if (!this.props.allData.length) return <h2>No items to show</h2>;
     return (
       <div className="main-list">
         <h2>Goods and Services list</h2>
         <div className="btn-group mb-3" role="group">
-          <button onClick={() => this.props.onFilterGoodsServices()} type="button" className="btn btn-primary">
+          <button onClick={() => this.props.onFilterGoodsServices('')} type="button" className="btn btn-primary">
             All Goods and Services
           </button>
           <button onClick={() => this.props.onFilterGoodsServices('Goods')} type="button" className="btn btn-warning">
@@ -20,7 +21,7 @@ class GoodsServicesList extends Component {
         </div>
         <div className="items-list d-flex flex-wrap">
           {this.props.allData.map((item) => (
-            <OneItem item={item} key={item._id}></OneItem>
+            <OneItem onDelete={this.props.onDelete} item={item} key={item._id}></OneItem>
           ))}
         </div>
       </div>
